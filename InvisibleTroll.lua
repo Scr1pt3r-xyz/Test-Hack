@@ -126,13 +126,13 @@ local function C_9()
 				hum.HipHeight = height
 				btm.Text = 'Unhide'
 				oldposition = char.PrimaryPart.Position
-				--hrp.Transparency = 0.5
+				hum.CameraOffset = Vector3.new(0,-hum.HipHeight,0)
 			else
 				e = false
 				hum.HipHeight = 0
 				btm.Text = 'Hide'
 				char:MoveTo(Vector3.new(char.PrimaryPart.Position.X,oldposition.Y,char.PrimaryPart.Position.Z))
-				--hrp.Transparency = 1
+				hum.CameraOffset = Vector3.new(0,-hum.HipHeight,0)
 			end
 		end
 	end)
