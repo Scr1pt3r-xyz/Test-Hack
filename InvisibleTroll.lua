@@ -77,30 +77,62 @@ G2L["b"]["AspectRatio"] = 1.75431;
 
 -- StarterGui.ScreenGui.Frame.TextButton.LocalScript
 local function C_9()
-local script = G2L["9"];
+	local script = G2L["9"];
 	local player = game.Players.LocalPlayer
-	
+
 	local char = player.Character or player.CharacterAdded:Wait()
-	
+	--local hrp = char:WaitForChild("BasePart"):: BasePart
 	local hum = char:WaitForChild('Humanoid'):: Humanoid
-	
+
 	local btm = script.Parent
 	local e = false
-	
+	--hrp.Color = Color3.new(1,0,0)
 	local oldposition = Vector3.new(0,0,0)
-	
+	hum.AutomaticScalingEnabled = false
+
+	local height = 1789
+
+
+	game.UserInputService.InputBegan:Connect(function(input, gm)
+		if gm then
+			return 
+		end
+
+		if input.KeyCode == Enum.KeyCode.F then
+			if player and char then
+				if e == false then
+					e = true
+					hum.HipHeight = height
+					btm.Text = 'Unhide'
+					oldposition = char.PrimaryPart.Position
+					hum.CameraOffset = Vector3.new(0,-hum.HipHeight,0)
+					--hrp.Transparency = 0.5
+				else
+					e = false
+					hum.HipHeight = 0
+					btm.Text = 'Hide'
+					char:MoveTo(Vector3.new(char.PrimaryPart.Position.X,oldposition.Y,char.PrimaryPart.Position.Z))
+					hum.CameraOffset = Vector3.new(0,-hum.HipHeight,0)
+					--hrp.Transparency = 1
+				end
+			end
+		end
+	end)
+
 	btm.MouseButton1Down:Connect(function()
 		if player and char then
 			if e == false then
 				e = true
-				hum.HipHeight = 100
+				hum.HipHeight = height
 				btm.Text = 'Unhide'
 				oldposition = char.PrimaryPart.Position
+				--hrp.Transparency = 0.5
 			else
 				e = false
-				hum.HipHeight = 2
+				hum.HipHeight = 0
 				btm.Text = 'Hide'
-				char:MoveTo(oldposition)
+				char:MoveTo(Vector3.new(char.PrimaryPart.Position.X,oldposition.Y,char.PrimaryPart.Position.Z))
+				--hrp.Transparency = 1
 			end
 		end
 	end)
