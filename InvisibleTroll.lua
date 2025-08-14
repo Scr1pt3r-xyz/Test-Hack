@@ -109,7 +109,11 @@ local function C_9()
 					--hrp.Transparency = 0.5
 				else
 					e = false
-					hum.HipHeight = 0
+					if hum.RigType == Enum.RigType.R15 then
+						hum.HipHeight = 2
+						else
+						hum.HipHeight = 0
+					end
 					btm.Text = 'Hide'
 					char:MoveTo(Vector3.new(char.PrimaryPart.Position.X,oldposition.Y,char.PrimaryPart.Position.Z))
 					hum.CameraOffset = Vector3.new(0,-hum.HipHeight,0)
