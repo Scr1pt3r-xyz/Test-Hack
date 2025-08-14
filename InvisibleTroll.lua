@@ -111,7 +111,7 @@ local function C_9()
 					e = false
 					if hum.RigType == Enum.RigType.R15 then
 						hum.HipHeight = 2
-						else
+					else
 						hum.HipHeight = 0
 					end
 					btm.Text = 'Hide'
