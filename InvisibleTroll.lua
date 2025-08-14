@@ -110,7 +110,7 @@ local function C_9()
 				else
 					e = false
 					if hum.RigType == Enum.RigType.R15 then
-						hum.HipHeight = 2
+						hum.HipHeight = 3
 					else
 						hum.HipHeight = 0
 					end
